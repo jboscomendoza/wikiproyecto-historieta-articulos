@@ -3,7 +3,6 @@ import re
 from bs4 import BeautifulSoup
 from time import sleep
 
-
 ESWIKI = "https://es.wikipedia.org"
 PAGINA_INICIAL = "/wiki/Categor%C3%ADa:Wikiproyecto:Historieta/Art%C3%ADculos"
 
@@ -33,12 +32,18 @@ for pag in paginas:
     for i in pag.find_all("li"):
         nombre = i.get_text()
         if re.search("Discusión:", nombre):
-            nombre = "[[" + nombre.replace("Discusión:", "") + "]]"
+            nombre = "# [[" + nombre.replace("Discusión:", "") + "]]"
             articulos.append(nombre)
         elif re.search("Anexo discusión:", nombre):
-            nombre = "[[" + nombre.replace(" discusión", "") + "]]"
+            nombre = "# [[" + nombre.replace(" discusión", "") + "]]"
             articulos.append(nombre)
         else:
             pass
 
-articulos.sort()
+with open("pagina-wiki-base.txt", "r", encoding="utf-8") as f:
+    pagina_wiki = f.read()
+
+pagina_wiki = pagina_wiki.replace("CONTENIDO", "\n".join(articulos))
+
+with open("pagina-wiki-contenido.text", "w", encoding="utf-8") as f:
+    f.write(pagina_wiki)

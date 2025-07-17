@@ -1,0 +1,12 @@
+{{metaplantilla de avisos
+| tipo = aviso
+| texto = {{{1|'''AVISO:''' Este no es un artículo enciclopédico, es una página del [[Wikiproyecto:Historieta]].}}}
+}}
+
+Sigue una lista de todos los artículos cuyas páginas de discusión están categorizadas en [[:Categoría:Wikiproyecto:Historieta/Artículos]].
+
+<div class="references-small" style="-moz-column-count:3; column-count:3;">
+
+CONTENIDO
+
+</div>
