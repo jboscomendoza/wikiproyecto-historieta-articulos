@@ -26,3 +26,19 @@ while hay_siguiente:
     else:
         print("No hay más páginas.")
         hay_siguiente = False
+
+articulos = []
+
+for pag in paginas:
+    for i in pag.find_all("li"):
+        nombre = i.get_text()
+        if re.search("Discusión:", nombre):
+            nombre = "[[" + nombre.replace("Discusión:", "") + "]]"
+            articulos.append(nombre)
+        elif re.search("Anexo discusión:", nombre):
+            nombre = "[[" + nombre.replace(" discusión", "") + "]]"
+            articulos.append(nombre)
+        else:
+            pass
+
+articulos.sort()
